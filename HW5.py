@@ -26,29 +26,65 @@ def load_words(filename):
     return word_list
 
 def play_hangman():
-    load_words("words.txt")
-    word = random.choice(load_words("words.txt"))
-    print(word)
-    print("Let's play hangman!")
+    # words = load_words("words.txt") 
+    # word = random.choice(words) 
+    
+    word = "banjo"  # Hardcoded for testing
+
     dashes = "-" * len(word)
+    print("Let's play hangman!")
     print(dashes)
-    print(dashes[1])
 
-    guessed_letters = []
- 
+    guessed_letters = [] 
+    remaining_guesses = 8 
 
-    guess = input(str("Guess a letter: "))
-    guess = str.lower(guess)
+    while remaining_guesses > 0 and dashes != word:
+        guess = input("Guess a letter: ").lower()
 
-    while str.isalpha(guess) == False:
-        print("That is not a letter. Enter a letter.")
-        guess = input(str("Guess a letter: "))
-        guess = str.lower(guess)
+        # Validate input (must be a single letter)
+        if not guess.isalpha() or len(guess) != 1:
+            print("That is not a letter. Enter a letter.")
+        else:
+            # Check if letter was already guessed
+            already_guessed = False
+            for letter in guessed_letters:
+                if guess == letter:
+                    already_guessed = True
 
-    guessed_letters.append(guess)
+            if already_guessed:
+                print(f"You've already guessed {guess}")
+            else:
+                guessed_letters.append(guess)
 
-    if guess in guessed_letters:
-            print(f"You've already guessed {guess}")
+                found = False
+                for letter in word:
+                    if letter == guess:
+                        found = True
+
+                if not found:
+                    remaining_guesses -= 1
+
+                new_dashes = ""
+                for i in range(len(word)):
+                    letter_found = False
+                    for guessed in guessed_letters:
+                        if word[i] == guessed:
+                            letter_found = True
+                    if letter_found:
+                        new_dashes += word[i]
+                    else:
+                        new_dashes += "-"
+
+                dashes = new_dashes
+                print(dashes)
+
+                if (dashes != word):
+                    print(f"You have {remaining_guesses} tries remaining.")
+
+    if dashes == word:
+        print("You win!")
+    else:
+        print(f"You lose. The word was {word}.")
 
 
 def main():
