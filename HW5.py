@@ -4,7 +4,10 @@
 # UT EID: imv367, nsh748
 # Course: CS 303E
 #
-# .
+# This program picks a random word, takes user's input of a letter, and prints 
+# dashes of the amount of letters of the random word, replacing the dash with
+# users input when correct, and repeats until user has run out of guesses or
+# guessed correctly.
 
 import random
 
@@ -35,6 +38,15 @@ def load_words(filename):
     return word_list
 
 def play_hangman():
+    """
+    
+    Parameters
+    ----------
+    
+    Returns
+    -------
+
+    """
     # words = load_words("words.txt") 
     # word = random.choice(words) 
     
