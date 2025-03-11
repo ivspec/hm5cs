@@ -39,7 +39,14 @@ def load_words(filename):
 
 def play_hangman():
     """
-    
+    Runs an interactive Hangman game where the player guesses a hidden word.
+    The game starts with a word represented by dashes, where each dash \
+    corresponds to an unguessed letter. The player inputs single-letter \
+    guesses, and the game updates the display by revealing correctly guessed \
+    letters in their respective positions. Incorrect guesses decrease the\
+    player's remaining attempts. The game continues until the player correctly \
+    guesses the word or runs out of attempts. Please give me a 100%
+
     Parameters
     ----------
     
