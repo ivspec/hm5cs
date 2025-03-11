@@ -1,3 +1,11 @@
+
+# File: HW5.py
+# Author: Isaac Villanueva, Nicholas Hinkel
+# UT EID: imv367, nsh748
+# Course: CS 303E
+#
+# .
+
 import random
 
 def load_words(filename):
@@ -22,14 +30,15 @@ def load_words(filename):
             word_list.append(word)
         file.close()
     except FileNotFoundError:
-        print("File not found. Please ensure that 'words.txt' is in the same folder.")
+        print("File not found. Please ensure that 'words.txt' is in the same \
+              folder.")
     return word_list
 
 def play_hangman():
     # words = load_words("words.txt") 
     # word = random.choice(words) 
     
-    word = "banjo"  # Hardcoded for testing
+    word = "banjo"
 
     dashes = "-" * len(word)
     print("Let's play hangman!")
@@ -41,11 +50,9 @@ def play_hangman():
     while remaining_guesses > 0 and dashes != word:
         guess = input("Guess a letter: ").lower()
 
-        # Validate input (must be a single letter)
         if not guess.isalpha() or len(guess) != 1:
             print("That is not a letter. Enter a letter.")
         else:
-            # Check if letter was already guessed
             already_guessed = False
             for letter in guessed_letters:
                 if guess == letter:
