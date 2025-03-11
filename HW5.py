@@ -39,10 +39,13 @@ def load_words(filename):
 
 def play_hangman():
     """
-    Runs a Hangman game where user input guesses letters to a selected random word.
-    The game prints the amount of dashes that the word is, and each dash 
-    corresponds to an unguessed letter. If the user guesses correctly, the dash is replaced with the correct letter.
-   If the user is incorrect, the amount of remaining guesses decreases. The function keeps accepting input until the guess is correct or user runs out of guesses.
+    Runs a Hangman game where user input guesses letters to a selected random
+    word. The game prints the amount of dashes that the word is, and each dash 
+    corresponds to an unguessed letter. If the user guesses correctly,
+    the dash is replaced with the correct letter.
+    If the user is incorrect, the amount of remaining guesses decreases.
+    The function keeps accepting input until the guess is correct or user runs
+    out of guesses.
 
     Parameters
     ----------
@@ -88,6 +91,10 @@ def play_hangman():
                     remaining_guesses -= 1
 
                 new_dashes = ""
+
+                # Itterates through each letter of the word until the players
+                # input matches a letter in the word and replaces teh "-" with
+                # the letter. Otherwise continue using "-"
                 for i in range(len(word)):
                     letter_found = False
                     for guessed in guessed_letters:
